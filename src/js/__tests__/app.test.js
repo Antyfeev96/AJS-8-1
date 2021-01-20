@@ -7,7 +7,12 @@ test('Character should be added', () => {
     level: 60,
   };
   team.add(dima);
-  expect(team.members.has(dima)).toBe(true);
+  for (const prop of team.members.entries()) {
+    expect(prop[0]).toEqual({
+      class: 'warrior',
+      level: 60,
+    });
+  }
 });
 
 test('Character should not be added', () => {

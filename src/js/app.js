@@ -4,8 +4,12 @@ export default class Team {
   }
 
   add(character) {
-    if (this.members.has(character)) {
-      throw new Error('Такой персонаж уже есть в команде');
+    for (const prop of this.members.entries()) {
+      prop.forEach((item) => {
+        if (JSON.stringify(item) === JSON.stringify(character)) {
+          throw new Error('Такой персонаж уже есть в команде');
+        }
+      });
     }
     this.members.add(character);
   }

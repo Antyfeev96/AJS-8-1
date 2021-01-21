@@ -17,12 +17,24 @@ test('Character should be added', () => {
 
 test('Character should not be added', () => {
   const team = new Team();
-  const dima = {
-    class: 'warrior',
+
+  team.add({
+    name: 'Воин',
+    type: 'warrior',
     level: 60,
-  };
-  team.add(dima);
-  expect(() => team.add(dima)).toThrow('Такой персонаж уже есть в команде');
+    health: 4000,
+    attack: 400,
+    defence: 1000,
+  });
+
+  expect(() => team.add({
+    name: 'Воин',
+    type: 'warrior',
+    level: 60,
+    health: 4000,
+    attack: 400,
+    defence: 1000,
+  })).toThrow('Такой персонаж уже есть в команде');
 });
 
 test('Another Alex should not be added', () => {
